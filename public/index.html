@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Wuk72 Cards: Your identity. One card.</title>
+<meta name="description" content="Smart QR/NFC cards linked to a profile you can update anytime. Scan, profile, connect.">
+<meta name="theme-color" content="#1F1E20">
+<style>
+:root{--bg:#141315;--nav:#1F1E20;--fg:#f4f6f4;--mut:#9aa39c;--g:#39ff7a;--g2:#12b886;--glass:rgba(255,255,255,.055);--line:rgba(255,255,255,.12);--r:20px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 system-ui,-apple-system,Segoe UI,sans-serif;overflow-x:hidden}
+#rain{position:fixed;inset:0;z-index:-1;opacity:.28;width:100%;height:100%}
+body:before{content:"";position:fixed;inset:0;z-index:-1;background:radial-gradient(60% 50% at 50% 0,transparent,var(--bg) 85%)}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1120px;margin:0 auto;padding:0 22px}
+nav{position:fixed;top:0;left:0;right:0;z-index:20;background:rgba(31,30,32,.72);backdrop-filter:blur(8px) saturate(140%);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.04em}
+.logo i{width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,var(--g),var(--g2));display:grid;place-items:center;color:#07140c;font-style:normal;font-weight:900}
+.links{display:flex;gap:26px;color:var(--mut);font-size:.95rem}.links a:hover{color:var(--fg)}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border-radius:99px;font-weight:700;border:1px solid var(--line);transition:.25s;cursor:pointer;background:var(--glass);color:var(--fg);font-size:.95rem}
+.btn:hover{transform:translateY(-2px);border-color:var(--g)}
+.btn.p{background:linear-gradient(135deg,var(--g),var(--g2));color:#06130b;border:0;box-shadow:0 8px 30px -8px var(--g)}
+.btn.p:hover{box-shadow:0 12px 40px -6px var(--g)}
+.nav-r{display:flex;gap:10px;align-items:center}.nav-r .btn{padding:9px 18px}
+header.hero{padding:150px 0 90px}
+.hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:50px;align-items:center}
+.eyebrow{display:inline-block;font:700 .75rem/1 ui-monospace,Menlo,monospace;letter-spacing:.2em;color:var(--g);border:1px solid rgba(57,255,122,.35);padding:8px 14px;border-radius:99px;background:rgba(57,255,122,.07)}
+h1{font-size:clamp(2.6rem,6.4vw,5rem);line-height:1.02;margin:22px 0 18px;letter-spacing:-.03em}
+h1 em{font-style:normal;background:linear-gradient(120deg,var(--g),#9dffc4 60%,var(--g2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{color:var(--mut);font-size:1.15rem;max-width:520px}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin:30px 0 26px}
+.trust{display:flex;gap:22px;color:var(--mut);font-size:.85rem;flex-wrap:wrap}.trust b{color:var(--g)}
+.stage{position:relative;height:420px;perspective:1100px;display:grid;place-items:center}
+.card3d{width:min(380px,92%);aspect-ratio:85.6/53.98;border-radius:18px;position:relative;transform-style:preserve-3d;transition:transform .15s ease-out;
+background:linear-gradient(135deg,#1c2a22,#0e1411 55%,#16241c);border:1px solid rgba(57,255,122,.35);box-shadow:0 40px 80px -20px rgba(57,255,122,.35),inset 0 0 0 1px rgba(255,255,255,.05);overflow:hidden;padding:22px;animation:float 6s ease-in-out infinite}
+@keyframes float{50%{translate:0 -12px}}
+.card3d:after{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 30%,rgba(255,255,255,.14) 48%,transparent 62%);transform:translateX(var(--sh,-60%));pointer-events:none}
+.card3d .nm{font-weight:800;font-size:1.25rem;margin-top:44px}.card3d .tt{color:var(--g);font:.72rem ui-monospace,monospace;letter-spacing:.14em}
+.card3d .chip{position:absolute;right:20px;top:20px;width:34px;height:26px;border-radius:6px;background:linear-gradient(135deg,#d9c27a,#8d7a3b)}
+.qr{position:absolute;right:18px;bottom:18px;width:84px;height:84px;background:#fff;border-radius:8px;padding:6px;display:grid;grid-template-columns:repeat(21,1fr)}
+.qr span{background:#0b0b0b}.qr span.o{background:transparent}
+.phone{position:absolute;right:-6px;bottom:-4px;width:150px;aspect-ratio:9/18;border-radius:24px;background:#0c0c0e;border:2px solid #2d2d30;padding:12px 10px;transform:translateZ(60px) rotate(6deg);box-shadow:0 30px 60px -10px #000;font-size:.62rem;text-align:center}
+.phone .av{width:44px;height:44px;border-radius:50%;margin:14px auto 8px;background:linear-gradient(135deg,var(--g),var(--g2))}
+.phone .pill{background:rgba(57,255,122,.14);border-radius:99px;padding:5px;margin:6px 8px;color:var(--g)}
+section{padding:90px 0}
+.kick{font:700 .75rem ui-monospace,monospace;letter-spacing:.2em;color:var(--g)}
+h2{font-size:clamp(1.9rem,4vw,3rem);line-height:1.1;margin:12px 0 14px;letter-spacing:-.02em}
+.sub{color:var(--mut);max-width:560px}
+.flow{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:44px}
+.step{position:relative;padding:30px;border-radius:var(--r);background:var(--glass);border:1px solid var(--line);backdrop-filter:blur(6px);transition:.4s}
+.step .n{font:800 3.2rem/1 ui-monospace,monospace;color:rgba(57,255,122,.18);transition:.4s}
+.step h3{margin:10px 0 6px;font-size:1.5rem;letter-spacing:.06em}
+.step.on{border-color:var(--g);box-shadow:0 0 50px -15px var(--g)}.step.on .n{color:var(--g)}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:44px}
+.fc{position:relative;padding:28px;border-radius:var(--r);background:var(--glass);border:1px solid var(--line);overflow:hidden}
+.fc:before{content:"";position:absolute;inset:0;background:radial-gradient(260px circle at var(--x,50%) var(--y,0),rgba(57,255,122,.16),transparent 70%);opacity:0;transition:.3s}
+.fc:hover:before{opacity:1}.fc>*{position:relative}
+.fc .ic{font-size:1.6rem}.fc h3{margin:12px 0 6px}.fc p{margin:0;color:var(--mut);font-size:.95rem}
+.demo{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;margin-top:44px;padding:36px;border-radius:28px;background:var(--glass);border:1px solid var(--line)}
+.demo label{display:block;font-size:.8rem;color:var(--mut);margin:14px 0 6px}
+.demo input{width:100%;padding:13px 16px;border-radius:12px;border:1px solid var(--line);background:rgba(0,0,0,.35);color:var(--fg);font:inherit}
+.demo input:focus{outline:2px solid var(--g);outline-offset:1px}
+.sw{display:flex;gap:10px;margin-top:6px}.sw button{width:30px;height:30px;border-radius:50%;border:2px solid transparent;cursor:pointer}.sw button.on{border-color:#fff}
+.dp{max-width:300px;margin:auto;border-radius:30px;background:#0c0c0e;border:2px solid #2d2d30;padding:26px 20px;text-align:center;box-shadow:0 30px 60px -20px #000}
+.dp .av{width:76px;height:76px;border-radius:50%;margin:0 auto 12px;background:var(--ac,var(--g));transition:.3s}
+.dp b{font-size:1.2rem;display:block}.dp small{color:var(--mut)}
+.dp .pill{margin:10px 0 0;padding:10px;border-radius:99px;background:color-mix(in srgb,var(--ac,var(--g)) 18%,transparent);color:var(--ac,var(--g));font-weight:600;transition:.3s}
+.code{margin-top:16px;font:.78rem ui-monospace,monospace;color:var(--mut)}.code b{color:var(--g)}
+.prods{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-top:44px}
+.pr{padding:22px 18px;border-radius:var(--r);background:var(--glass);border:1px solid var(--line);transition:.3s}
+.pr:hover{transform:translateY(-6px);border-color:var(--g)}.pr.hot{border-color:var(--g);box-shadow:0 0 40px -18px var(--g)}
+.pr h3{font-size:1rem;margin:0 0 4px}.pr .pc{font-size:1.5rem;font-weight:800;margin:10px 0}.pr small{color:var(--mut);display:block}
+details{border-bottom:1px solid var(--line);padding:18px 0}summary{cursor:pointer;font-weight:700;list-style:none}summary:after{content:"+";float:right;color:var(--g)}
+details[open] summary:after{content:"–"}details p{color:var(--mut);margin:10px 0 0}
+.final{text-align:center;padding:70px 30px;border-radius:32px;border:1px solid rgba(57,255,122,.35);background:radial-gradient(70% 120% at 50% 0,rgba(57,255,122,.14),transparent),var(--glass)}
+footer{padding:40px 0;color:var(--mut);font-size:.85rem;text-align:center}
+.js .rv{opacity:0;transform:translateY(26px);transition:.8s cubic-bezier(.2,.7,.2,1)}.js .rv.in{opacity:1;transform:none}
+@media(max-width:900px){.hero .wrap,.demo{grid-template-columns:1fr}.grid,.flow{grid-template-columns:1fr}.prods{grid-template-columns:1fr 1fr}.links{display:none}.stage{height:380px}header.hero{padding-top:120px}}
+@media(max-width:480px){.nav-r .btn:not(.p){display:none}.prods{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.js .rv{opacity:1;transform:none}}
+</style></head><body>
+<canvas id="rain" aria-hidden="true"></canvas>
+<nav><div class="wrap"><a class="logo" href="/"><i>W</i>WUK72 CARDS</a>
+<div class="links"><a href="#how">How it works</a><a href="#features">Features</a><a href="#live">Live demo</a><a href="#cards">Cards</a><a href="#faq">FAQ</a></div>
+<div class="nav-r"><a class="btn" href="/login.html">Login</a><a class="btn p" href="/signup.html">Create Your Card</a></div></div></nav>
+
+<header class="hero"><div class="wrap">
+<div><span class="eyebrow">SMART CARDS · QR + NFC</span>
+<h1>Your identity.<br><em>One card.</em></h1>
+<p class="lead">A physical card with a QR code and optional NFC chip that opens your living digital profile. Change your details whenever you want. The card never needs reprinting.</p>
+<div class="cta"><a class="btn p" href="/signup.html">Create Your Card →</a><a class="btn" href="/p/demo">Explore Examples</a></div>
+<div class="trust"><span><b>CR80</b> standard size</span><span><b>0</b> reprints for updates</span><span><b>Private</b> by default</span></div></div>
+<div class="stage" id="stage"><div class="card3d" id="card"><div class="tt">WUK72 · FOUNDER</div><div class="chip"></div><div class="nm">Prince</div><div class="tt" style="margin-top:4px">FRONTEND DEVELOPER</div><div class="qr" id="qr"></div></div>
+<div class="phone"><div class="av"></div><b>Prince</b><div style="color:#888">Frontend Developer</div><div class="pill">Portfolio</div><div class="pill">GitHub</div><div class="pill">Contact</div></div></div>
+</div></header>
+
+<section id="how"><div class="wrap rv"><span class="kick">HOW IT WORKS</span><h2>Scan. Profile. Connect.</h2><p class="sub">Three moments, no apps, no typing. The person you meet is one tap from everything you want them to see.</p>
+<div class="flow" id="flow">
+<div class="step"><div class="n">01</div><h3>SCAN</h3><p>Point a phone at the QR or tap the NFC card. Every card carries its own short link.</p></div>
+<div class="step"><div class="n">02</div><h3>PROFILE</h3><p>Your current profile opens instantly: photo, video intro, portfolio, socials, contact.</p></div>
+<div class="step"><div class="n">03</div><h3>CONNECT</h3><p>They save your details, message you, watch your intro. You see it in your analytics.</p></div></div></div></section>
+
+<section id="features"><div class="wrap rv"><span class="kick">FEATURES</span><h2>Built like a product, not a template.</h2>
+<div class="grid" id="fg">
+<div class="fc"><div class="ic">🎨</div><h3>Card Designer</h3><p>Drag, resize and layer text, logos, shapes and gradients on a live CR80 preview.</p></div>
+<div class="fc"><div class="ic">📤</div><h3>Bring your own design</h3><p>Upload PNG, JPG, SVG or PDF for front and back, with bleed and safe-area guides.</p></div>
+<div class="fc"><div class="ic">🔗</div><h3>Dynamic QR</h3><p>Your QR points to a card ID, not a fixed page. Edit your profile forever.</p></div>
+<div class="fc"><div class="ic">📡</div><h3>NFC ready</h3><p>Same link on a chip. Tap or scan, it all lands on the same profile.</p></div>
+<div class="fc"><div class="ic">🎬</div><h3>Intro video</h3><p>Upload a video or embed YouTube/Vimeo, shown beautifully on every device.</p></div>
+<div class="fc"><div class="ic">🔒</div><h3>Private by design</h3><p>Files stay private until you publish them. Analytics collect no IPs.</p></div></div></div></section>
+
+<section id="live"><div class="wrap rv"><span class="kick">TRY IT</span><h2>Edit your profile. The card stays the same.</h2><p class="sub">This is the whole idea. Change anything below and notice the card code never moves.</p>
+<div class="demo"><div>
+<label for="n">Name</label><input id="n" value="Prince" maxlength="30">
+<label for="t">Title</label><input id="t" value="Frontend Developer" maxlength="36">
+<label>Accent</label><div class="sw" id="sw"><button class="on" style="background:#39ff7a" data-c="#39ff7a" aria-label="Green"></button><button style="background:#22d3ee" data-c="#22d3ee" aria-label="Cyan"></button><button style="background:#a78bfa" data-c="#a78bfa" aria-label="Violet"></button><button style="background:#fb923c" data-c="#fb923c" aria-label="Orange"></button></div></div>
+<div class="dp" id="dp"><div class="av"></div><b id="dn">Prince</b><small id="dt">Frontend Developer</small><div class="pill">Save contact</div><div class="pill">Portfolio</div><div class="code">Card link: <b>/c/AB72X91</b> (unchanged)</div></div></div></div></section>
+
+<section id="cards"><div class="wrap rv"><span class="kick">CARDS</span><h2>Pick your material.</h2><p class="sub">Sample catalogue shown. Final pricing is managed from the admin panel.</p>
+<div class="prods"><div class="pr"><h3>Basic PVC</h3><small>0.76 mm · matte/gloss</small><div class="pc">₹299</div><small>Everyday essential</small></div>
+<div class="pr"><h3>Premium PVC</h3><small>1.0 mm · soft-touch</small><div class="pc">₹499</div><small>Thick and premium</small></div>
+<div class="pr hot"><h3>NFC Card ★</h3><small>PVC + chip</small><div class="pc">₹799</div><small>Tap or scan</small></div>
+<div class="pr"><h3>Metal</h3><small>Steel · engraved</small><div class="pc">₹2,999</div><small>Make an entrance</small></div>
+<div class="pr"><h3>Custom Design</h3><small>Your artwork</small><div class="pc">₹599</div><small>Print-ready review</small></div></div></div></section>
+
+<section id="faq"><div class="wrap rv" style="max-width:760px"><span class="kick">FAQ</span><h2>Good questions.</h2>
+<details><summary>Do I need to reprint if my details change?</summary><p>No. The code on your card points to your account, so whatever your profile shows today is what people see.</p></details>
+<details><summary>Do visitors need an app?</summary><p>No. Phone cameras open the link directly, and NFC phones open it with a tap.</p></details>
+<details><summary>What do you track?</summary><p>Only that a scan happened, when, and whether it came from QR, NFC or a direct link, plus mobile or desktop. No IP addresses.</p></details>
+<details><summary>Can I upload my own design?</summary><p>Yes. Send PNG, JPG, SVG or PDF for each side. We show a card preview and flag size or resolution problems before you order.</p></details></div></section>
+
+<section><div class="wrap rv"><div class="final"><h2>Your identity. One card.</h2><p class="sub" style="margin:0 auto 26px">Build your profile in minutes. Your card is next.</p><a class="btn p" href="/signup.html">Create Your Card →</a></div></div></section>
+<footer>© <span id="y"></span> Wuk72 Cards · Made for people worth remembering</footer>
+
+<script src="app.js" defer></script></body></html>
